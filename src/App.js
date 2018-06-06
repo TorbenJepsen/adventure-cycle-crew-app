@@ -13,10 +13,12 @@ import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 
 import './styles/main.css';
+import AddRide from './components/AddRide/AddRide';
+import UpcomingRide from './components/UpcomingRide/UpcomingRide';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="Adventure Cycling Club" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -36,9 +38,17 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        <Route
+          path="/add"
+          component={AddRide}
+        />
+        <Route
+          path="/ride"
+          component={UpcomingRide}
+        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
-
+        <UpcomingRide />
       </Switch>
     </Router>
   </div>
