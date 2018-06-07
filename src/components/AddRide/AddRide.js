@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import axios from 'axios';
+import AppBar from '../AppBar/AppBar';
+
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -88,7 +90,8 @@ class AddRide extends Component {
 
         return (
             <div>
-                <Nav />
+                {/* <Nav /> */}
+                <AppBar />
                 {content}
             </div>
         );

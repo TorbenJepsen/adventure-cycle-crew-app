@@ -15,10 +15,15 @@ import InfoPage from './components/InfoPage/InfoPage';
 import './styles/main.css';
 import AddRide from './components/AddRide/AddRide';
 import UpcomingRide from './components/UpcomingRide/UpcomingRide';
+import MyRides from './components/MyRides/MyRides';
+
+
+
 
 const App = () => (
   <div>
-    <Header title="Adventure Cycling Club" />
+    {/* <Header title="Adventure Cycling Club" /> */}
+    
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -46,9 +51,12 @@ const App = () => (
           path="/ride"
           component={UpcomingRide}
         />
+        <Route
+          path="/myrides"
+          component={MyRides}
+        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
-        <UpcomingRide />
       </Switch>
     </Router>
   </div>

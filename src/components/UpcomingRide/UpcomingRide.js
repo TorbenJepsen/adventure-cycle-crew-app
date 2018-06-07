@@ -5,6 +5,8 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import RideItem from '../RideItem/RideItem';
 import axios from 'axios';
+import AppBar from '../AppBar/AppBar';
+
 
 
 const mapStateToProps = state => ({
@@ -31,6 +33,15 @@ class UpcomingRide extends Component {
         })
     };
 
+    handleJoinRide = (ride) => {
+        console.log('join ride', ride);
+        axios.post('/api/bike/join', ride).then((response) => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.getAllRides();
@@ -49,7 +60,7 @@ class UpcomingRide extends Component {
             content = (
                 <div>
                     {this.state.rideList.map(ride => <RideItem key={ride.id}
-                        ride={ride} />
+                        ride={ride} handleJoinRide={this.handleJoinRide} />
                     )}
                 </div>
             );
@@ -57,7 +68,9 @@ class UpcomingRide extends Component {
 
         return (
             <div>
-                <Nav />
+                
+                {/* <Nav /> */}
+                <AppBar />
                 {content}
             </div>
         );

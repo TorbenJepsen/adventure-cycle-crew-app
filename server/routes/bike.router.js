@@ -21,6 +21,46 @@ router.get('/', (req, res) => {
     }
 });
 
+router.get('/created', (req, res) => {
+    console.log('GET created rides route');
+    if(req.isAuthenticated()) {
+        let queryText = `SELECT "person"."id", "person"."username", "ride"."date", "ride"."terrain", "ride"."address", "ride"."length", "ride"."start_time", "ride"."id"
+        FROM "person"
+        JOIN "ride" ON "person"."id" = "ride"."person_id"
+        ORDER BY "ride"."date"`;
+        pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error on get created', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
+router.get('/joined', (req, res) => {
+    console.log('GET joined rides route');
+    if(req.isAuthenticated()) {
+        let queryText = `SELECT "join_ride"."id", "ride"."date", "ride"."address", "ride"."length", "ride"."start_time", "ride"."terrain"
+        FROM "join_ride"
+        JOIN "ride" ON "ride"."id" =  "join_ride"."ride_id"
+        JOIN "person" ON "person"."id" = "join_ride"."person_id"
+        WHERE "person"."id" = $1
+        ORDER BY "ride"."date"`;
+        pool.query(queryText, [req.user.id])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error on get created', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /**
  * POST route template
  */
@@ -42,5 +82,47 @@ router.post('/', (req, res) => {
     }
 
 });
+
+router.post('/join', (req, res, next) => {
+    if(req.isAuthenticated()){
+        const joining = req.body;
+        let queryText = `INSERT INTO "join_ride" (person_id, ride_id) 
+        VALUES ($1, $2)`;
+        pool.query(queryText, [req.user.id, joining.id])
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            if(error.constraint === 'uc_tab'){
+                res.sendStatus(501);
+            }else {
+                console.log('error in Post/ join:', error);
+                res.sendStatus(500);
+            }
+        })
+
+        }else {
+            res.sendStatus(500);
+        }
+    }
+);
+
+router.delete('/:id', (req, res, next) => {
+    console.log(req.user);
+    console.log('what is this?',req.params);
+    console.log('req.body', req.body);
+    if(req.isAuthenticated()){
+      let queryText = `DELETE FROM "join_ride" WHERE "person_id" = $1 AND "id" = $2`;
+      pool.query(queryText, [req.user.id, req.params.id])
+      .then( () => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('error in DELETE', error);
+        res.sendStatus(500);
+      })
+    }else {
+      res.sendStatus(403);
+    }
+  });
 
 module.exports = router;

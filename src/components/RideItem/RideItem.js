@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -14,6 +12,7 @@ import moment from 'moment';
 const styles = {
     card: {
         maxWidth: 345,
+        float: 'left',
     },
     media: {
         height: 0,
@@ -50,7 +49,7 @@ function RideItem(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="large" color="primary">
+                    <Button variant="raised" size="large" color="primary" onClick={() => props.handleJoinRide(props.ride)}>
                         Join this Ride!
             </Button>
 
