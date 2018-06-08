@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import axios from 'axios';
 import AppBar from '../AppBar/AppBar';
 
 
@@ -36,11 +35,11 @@ class AddRide extends Component {
     addNewRide = event => {
         event.preventDefault();
         console.log(this.state.newRide);
-        axios.post('/api/bike', this.state.newRide).then((response) => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        });
+        this.props.dispatch({
+            type: 'SET_RIDE',
+            payload: this.state.newRide,
+        })
+        this.props.history.push('ride');
     }
 
     componentDidMount() {

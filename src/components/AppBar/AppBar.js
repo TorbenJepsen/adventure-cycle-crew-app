@@ -27,7 +27,7 @@ function ButtonsAppBar(props) {
       <AppBar position="static" title={<img src="images/bike-logo-icon-47219.png" alt="bike logo" />}>
         <Toolbar>
           <MenuListComposition />
-          <img src="images/bike-logo-icon-47219.png" height="70" width="70" className="logo" />
+          <img src="images/bike-logo-icon-47219.png" alt="bike-logo" height="70" width="70" className="logo" />
           <Typography variant="title" color="inherit" className={classes.flex}>
             WBL Adventure Cycle Club
          </Typography>

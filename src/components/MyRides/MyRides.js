@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import axios from 'axios';
 import CreatedRides from '../CreatedRides/CreatedRides';
 import JoinedRides from '../JoinedRides/JoinedRides';
 import AppBar from '../AppBar/AppBar';
@@ -11,47 +10,16 @@ import AppBar from '../AppBar/AppBar';
 
 const mapStateToProps = state => ({
   user: state.user,
+  state: state,
 });
 
 class MyRides extends Component {
-    constructor(props){
-        super(props);
 
-        this.state = {
-            createdRides: [],
-            joinedRides: [],
-        }
-    }
-
-    getAllCreatedRides = () => {
-        axios.get('/api/bike/created').then((response) => {
-            console.log(response.data);
-            this.setState({
-                createdRides: response.data,
-            });
-        }).catch((error) => {
-            console.log('error on get', error);
-        })
-    };
-
-    getAllJoinedRides = () => {
-        axios.get('/api/bike/joined').then((response) => {
-            console.log(response.data);
-            this.setState({
-                joinedRides: response.data,
-            });
-        }).catch((error) => {
-            console.log('error on get', error);
-        })
-    };
 
     leaveRide = ride => {
-        axios.delete(`/api/bike/${ride.id}`).then((response) => {
-            console.log(response);
-            this.getAllCreatedRides();
-        }).catch((error) => {
-            console.log('error on leave ride:', error);
-
+        this.props.dispatch({
+            type:'LEAVE_RIDE',
+            payload: ride,
         })
 
 
@@ -60,8 +28,8 @@ class MyRides extends Component {
 
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-    this.getAllCreatedRides();
-    this.getAllJoinedRides();
+    this.props.dispatch({type: 'GET_MY_JOINED_RIDES'});
+    this.props.dispatch({type: 'GET_MY_CREATED_RIDES'});
   }
 
   componentDidUpdate() {
@@ -77,9 +45,9 @@ class MyRides extends Component {
       content = (
         <div>
             <h3> Created Rides </h3>
-            <CreatedRides created={this.state.createdRides}/>
+            <CreatedRides created={this.props.state.myCreatedRides}/>
             <h3> Rides I've Joined </h3>
-            <JoinedRides joined={this.state.joinedRides} leaveRide={this.leaveRide}/>
+            <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
         </div>
       );
     }

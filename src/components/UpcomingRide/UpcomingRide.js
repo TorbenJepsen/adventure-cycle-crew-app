@@ -3,47 +3,29 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import RideItem from '../RideItem/RideItem';
-import axios from 'axios';
 import AppBar from '../AppBar/AppBar';
+
 
 
 
 const mapStateToProps = state => ({
     user: state.user,
+    state: state,
 });
 
 class UpcomingRide extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            rideList: [],
-        };
-    }
-
-    getAllRides = () => {
-        axios.get('/api/bike').then((response) => {
-            console.log(response.data);
-            this.setState({
-                rideList: response.data,
-            });
-        }).catch((error) => {
-            console.log('error on get', error);
-        })
-    };
 
     handleJoinRide = (ride) => {
         console.log('join ride', ride);
-        axios.post('/api/bike/join', ride).then((response) => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
+        this.props.dispatch({
+            type: 'JOIN_RIDE',
+            payload: ride,
         });
     }
 
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.getAllRides();
+        this.props.dispatch({ type: 'GET_RIDES'});
     }
 
     componentDidUpdate() {
@@ -58,7 +40,7 @@ class UpcomingRide extends Component {
         if (this.props.user.userName) {
             content = (
                 <div>
-                    {this.state.rideList.map(ride => <RideItem key={ride.id}
+                    {this.props.state.upcomingRides.map(ride => <RideItem key={ride.id}
                         ride={ride} handleJoinRide={this.handleJoinRide} />
                     )}
                 </div>
