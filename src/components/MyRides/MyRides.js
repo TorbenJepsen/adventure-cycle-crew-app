@@ -25,6 +25,13 @@ class MyRides extends Component {
 
     }
 
+    cancelRide = ride => {
+        this.props.dispatch({
+            type: 'CANCEL_RIDE',
+            payload: ride,
+        })
+    }
+
 
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
@@ -45,7 +52,7 @@ class MyRides extends Component {
       content = (
         <div>
             <h3> Created Rides </h3>
-            <CreatedRides created={this.props.state.myCreatedRides}/>
+            <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide}/>
             <h3> Rides I've Joined </h3>
             <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
         </div>

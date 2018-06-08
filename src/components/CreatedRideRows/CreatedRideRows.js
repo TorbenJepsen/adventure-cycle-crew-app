@@ -55,7 +55,7 @@ function CreatedRidesRows(props) {
             </Button>
             </CustomTableCell>
             <CustomTableCell>
-            <Button variant="raised" size="small" color="secondary">
+            <Button variant="raised" size="small" color="secondary" onClick={() => props.cancelRide(props.ride)}>
                 Remove Ride?
             </Button>
             </CustomTableCell>

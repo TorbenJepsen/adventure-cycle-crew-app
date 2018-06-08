@@ -106,10 +106,27 @@ router.post('/join', (req, res, next) => {
     }
 );
 
+router.put('/update', (req, res) => {
+    console.log('updateRide', req.body);
+    if(req.isAuthenticated()){
+        const updatedRide = req.body;
+        let queryText = `UPDATE "ride" SET "date" = $1, "terrain" = $2, "address" = $3, "start_time" = $4, "length" = $5 WHERE "id" = $6`;
+        pool.query(queryText, [updatedRide.date, updatedRide.terrain, updatedRide.address, updatedRide.start_time, updatedRide.length, updatedRide.id])
+        .then( (result) => {
+            console.log('successful Update', result);
+            res.sendStatus(201);
+        }).catch( (error) => {
+            console.log('error in UPDATE', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 router.delete('/:id', (req, res, next) => {
     console.log(req.user);
-    console.log('what is this?',req.params);
-    console.log('req.body', req.body);
+    console.log(params, req.params);
     if(req.isAuthenticated()){
       let queryText = `DELETE FROM "join_ride" WHERE "person_id" = $1 AND "id" = $2`;
       pool.query(queryText, [req.user.id, req.params.id])
@@ -117,10 +134,28 @@ router.delete('/:id', (req, res, next) => {
         res.sendStatus(201);
       })
       .catch( (error) => {
-        console.log('error in DELETE', error);
+        console.log('error in DELETE join_ride', error);
         res.sendStatus(500);
       })
     }else {
+      res.sendStatus(403);
+    }
+  });
+
+  router.delete('/cancel/:id', (req, res, next) => {
+    console.log('is this working?');
+    if (req.isAuthenticated()) {
+      let queryText = `DELETE FROM "ride" WHERE id = $1`;
+      pool.query(queryText, [req.params.id])
+      .then( () => {
+        res.sendStatus(200);
+      })
+      .catch( (error) => {
+        console.log('error in DELETE ride', error);
+        res.sendStatus(500);
+  
+      })
+    } else {
       res.sendStatus(403);
     }
   });
