@@ -11,13 +11,30 @@ import moment from 'moment';
 
 const styles = {
     card: {
-        maxWidth: 345,
+        width: 300,
         float: 'left',
+        margin: '10px',
+        padding: '5px',
+        display: 'flex',
+        flexDirection: 'column',
+
     },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
     },
+
+    contentHeader: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    button: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 };
 
 function RideItem(props) {
@@ -35,7 +52,7 @@ function RideItem(props) {
                 // title="Contemplative Reptile"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2">
+                    <Typography gutterBottom variant="headline" component="h2" className={classes.contentHeader}>
                         {date}
                     </Typography>
                     <Typography component="p">
@@ -48,7 +65,7 @@ function RideItem(props) {
                         Starting Address: {props.ride.address}
                     </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions className={classes.button}>
                     <Button variant="raised" size="large" color="primary" onClick={() => props.handleJoinRide(props.ride)}>
                         Join this Ride!
             </Button>

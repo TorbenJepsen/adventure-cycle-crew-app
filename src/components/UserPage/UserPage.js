@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../../components/Nav/Nav';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-
+import ButtonsAppBar from '../AppBar/AppBar';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -49,7 +47,7 @@ class UserPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <ButtonsAppBar />
         { content }
       </div>
     );

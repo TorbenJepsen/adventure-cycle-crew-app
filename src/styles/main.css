@@ -58,8 +58,8 @@ input[type="submit"] {
   
 }
 
-.rideCards {
-    float: left;
+.logo {
+    margin: 10px;
 }
 
 ul {

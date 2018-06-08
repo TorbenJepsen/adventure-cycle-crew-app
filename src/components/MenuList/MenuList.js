@@ -2,13 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Manager, Target, Popper } from 'react-popper';
-import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Collapse from '@material-ui/core/Collapse';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
-import Portal from '@material-ui/core/Portal';
-import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -37,7 +33,7 @@ class MenuListComposition extends React.Component {
     };
 
     handleClose = event => {
-        if (this.target1.contains(event.target) || this.target2.contains(event.target)) {
+        if (this.target1.contains(event.target)) {
             return;
         }
 

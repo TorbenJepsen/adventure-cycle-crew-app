@@ -5,8 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import MenuListComposition from '../MenuList/MenuList';
 
 const styles = {
@@ -22,26 +20,19 @@ const styles = {
   },
 };
 
-const handleLoginClick = (event) => {
-  this.props.history.push('/home');
-}
-
-const handleRegisterClick = (event) => {
-  this.props.history.push('/register');
-}
-
 function ButtonsAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" title={<img src="images/bike-logo-icon-47219.png" alt="bike logo" />}>
         <Toolbar>
-        <MenuListComposition />
+          <MenuListComposition />
+          <img src="images/bike-logo-icon-47219.png" height="70" width="70" className="logo" />
           <Typography variant="title" color="inherit" className={classes.flex}>
             WBL Adventure Cycle Club
-          </Typography>
-          <Button color="inherit" onClick={handleLoginClick}>Login</Button>
-          <Button color="inherit" onClick={handleRegisterClick}>Register</Button>
+         </Typography>
+          <Button color="inherit" >Login</Button>
+          <Button color="inherit" >Register</Button>
         </Toolbar>
       </AppBar>
     </div>
