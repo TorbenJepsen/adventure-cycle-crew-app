@@ -27,8 +27,9 @@ router.get('/created', (req, res) => {
         let queryText = `SELECT "person"."id", "person"."username", "ride"."date", "ride"."terrain", "ride"."address", "ride"."length", "ride"."start_time", "ride"."id"
         FROM "person"
         JOIN "ride" ON "person"."id" = "ride"."person_id"
+        WHERE "person"."id" = $1
         ORDER BY "ride"."date"`;
-        pool.query(queryText)
+        pool.query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows);
         }).catch((error) => {
