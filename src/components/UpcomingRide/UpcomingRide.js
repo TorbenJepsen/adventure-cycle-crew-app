@@ -26,6 +26,7 @@ class UpcomingRide extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({ type: 'GET_RIDES'});
+        this.props.dispatch({ type: 'GET_BIKERS' });
     }
 
     componentDidUpdate() {
@@ -36,12 +37,13 @@ class UpcomingRide extends Component {
 
     render() {
         let content = null;
+        let allRiders = this.props.state.joinedBikers;
 
         if (this.props.user.userName) {
             content = (
                 <div>
                     {this.props.state.upcomingRides.map(ride => <RideItem key={ride.id}
-                        ride={ride} handleJoinRide={this.handleJoinRide} />
+                        ride={ride} handleJoinRide={this.handleJoinRide} allRiders={allRiders}/>
                     )}
                 </div>
             );

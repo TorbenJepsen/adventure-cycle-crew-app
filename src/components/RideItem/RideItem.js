@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
+import BikerList from '../BikerList/BikerList';
 
 const styles = {
     card: {
@@ -41,6 +42,8 @@ function RideItem(props) {
     const date = moment(props.ride.date).format("MMMM Do YYYY");
     const time = props.ride.start_time;
     const formattedTime = moment(time, "HH:mm:ss").format("h:mm A");
+   
+    let riderList = props.allRiders.filter(rider => rider.ride_id === props.ride.id);
     const { classes } = props;
     
     return (
@@ -63,6 +66,7 @@ function RideItem(props) {
                         Terrain: {props.ride.terrain}
                         <br />
                         Starting Address: {props.ride.address}
+                        <BikerList riderList={riderList}/>
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.button}>

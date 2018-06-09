@@ -8,6 +8,7 @@ import joinRide from './joinRideSaga';
 import myCreatedRidesSaga from './myCreatedRidesSaga';
 import leaveRideSaga from './leaveRideSaga';
 import cancelRideSaga from './cancelRideSaga';
+import getBikers from './getBikersSaga';
 
 
 export default function* rootSaga() {
@@ -21,6 +22,7 @@ export default function* rootSaga() {
     myCreatedRidesSaga(),
     leaveRideSaga(),
     cancelRideSaga(),
+    getBikers(),
     // watchIncrementAsync()
   ]);
 }

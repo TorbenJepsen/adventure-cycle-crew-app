@@ -4,6 +4,7 @@ import login from './loginReducer';
 import upcomingRides from './upcomingRideReducer';
 import myJoinedRides from './myJoinedRidesReducer';
 import myCreatedRides from './myCreatedRidesReducer';
+import joinedBikers from './joinedBikersReducer';
 
 const store = combineReducers({
   user,
@@ -11,6 +12,7 @@ const store = combineReducers({
   upcomingRides,
   myJoinedRides,
   myCreatedRides,
+  joinedBikers,
 });
 
 export default store;

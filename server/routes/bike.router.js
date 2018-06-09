@@ -61,6 +61,23 @@ router.get('/joined', (req, res) => {
     }
 });
 
+router.get('/riders', (req, res) => {
+    if (req.isAuthenticated()) {
+      const queryText = `SELECT "join_ride"."person_id", "join_ride"."ride_id", "person"."id", "person"."username"
+       FROM "join_ride" JOIN "person" on "person"."id" = "join_ride"."person_id"`;
+      pool.query(queryText)
+      .then( (result) => {
+        res.send(result.rows);
+      })
+      .catch( (error) => {
+        console.log('error in riders GET', error);
+        res.sendStatus(500);
+      })
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
 /**
  * POST route template
  */
