@@ -62,6 +62,12 @@ input[type="submit"] {
     margin: 10px;
 }
 
+.loginForm {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
