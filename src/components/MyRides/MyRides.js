@@ -14,6 +14,25 @@ const mapStateToProps = state => ({
 });
 
 class MyRides extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isEditing: false,
+            date: '',
+            terrain: '',
+            address: '',
+            start_time: '',
+            length: '',
+        }
+    }
+
+    handleClickEdit = () => {
+        console.log('edit button clicked!', this.state);
+        this.setState({
+          isEditing: !this.state.isEditing,
+        })
+      }
 
 
     leaveRide = ride => {

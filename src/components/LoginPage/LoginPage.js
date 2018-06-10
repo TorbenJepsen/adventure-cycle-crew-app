@@ -88,7 +88,7 @@ class LoginPage extends Component {
         <div>
         <h1 className="loginForm">Welcome To The White Bear Lake Adventure Cycle Club!</h1>
         
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} className="form1">
          
           <div>
             <FormControl>

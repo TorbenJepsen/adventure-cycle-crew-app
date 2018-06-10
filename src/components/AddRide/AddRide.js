@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AppBar from '../AppBar/AppBar';
+import AddRideField from '../AddRideField/AddRideField';
 
 
 const mapStateToProps = state => ({
@@ -57,37 +58,15 @@ class AddRide extends Component {
 
         if (this.props.user.userName) {
             content = (
-                <div>
-                    <form onSubmit={this.addNewRide}>
-                        <label htmlFor="date">Date</label>
-                        <input type="date" onChange={this.handleChange('date')} value={this.state.newRide.date} placeholder="Enter Date" />
-                        <label htmlFor="terrain">Terrain Type</label>
-                        <select onChange={this.handleChange('terrain')} value={this.state.newRide.terrain}>
-                            <option>-- Select --</option>
-                            <option value="Paved Trail">Paved Trail</option>
-                            <option value="Rough trail">Rough Trail</option>
-                            <option value="Street">Street</option>
-                            <option value="Hills">Hills</option>
-                        </select>
-                        <label htmlFor="address">Address</label>
-                        <input type="text" onChange={this.handleChange('address')} value={this.state.newRide.address} placeholder="Enter Starting Address" />
-
-
-                        <label htmlFor="start_time">Start Time</label>
-                        <input type="time" onChange={this.handleChange('start_time')} value={this.state.newRide.start_time} placeholder="12:00" />
-                        <label htmlFor="length">Length of Ride</label>
-                        <input type="number" onChange={this.handleChange('length')} value={this.state.newRide.length} placeholder="Enter approx. length in miles" />
-
-                        <input type="submit" value="Add New Ride!" />
-                    </form>
-
+                <div className="addRideField">
+                    <AddRideField newRide={this.state.newRide} addNewRide={this.addNewRide} handleChange={this.handleChange} />
                 </div>
+
             );
         }
 
         return (
             <div>
-                {/* <Nav /> */}
                 <AppBar />
                 {content}
             </div>

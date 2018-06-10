@@ -38,8 +38,8 @@ function CreatedRidesRows(props) {
     const time = props.ride.start_time;
     const formattedTime = moment(time, "HH:mm:ss").format("h:mm A");
     const { classes } = props;
-    return (
 
+    return (
         <TableRow className={classes.row}>
             <CustomTableCell component="th" scope="row">
                 {date}

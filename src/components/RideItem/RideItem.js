@@ -66,8 +66,9 @@ function RideItem(props) {
                         Terrain: {props.ride.terrain}
                         <br />
                         Starting Address: {props.ride.address}
-                        <BikerList riderList={riderList}/>
+
                     </Typography>
+                    <BikerList riderList={riderList}/>
                 </CardContent>
                 <CardActions className={classes.button}>
                     <Button variant="raised" size="large" color="primary" onClick={() => props.handleJoinRide(props.ride)}>

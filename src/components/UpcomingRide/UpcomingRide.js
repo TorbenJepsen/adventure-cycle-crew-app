@@ -21,6 +21,7 @@ class UpcomingRide extends Component {
             type: 'JOIN_RIDE',
             payload: ride,
         });
+
     }
 
     componentDidMount() {
@@ -34,6 +35,7 @@ class UpcomingRide extends Component {
             this.props.history.push('home');
         }
     }
+
 
     render() {
         let content = null;

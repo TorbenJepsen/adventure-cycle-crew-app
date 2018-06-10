@@ -75,7 +75,7 @@ class RegisterPage extends Component {
       <div>
         <ButtonsAppBar />
         {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
+        <form onSubmit={this.registerUser} className="form1">
           <h1>Join the Club!</h1>
           <div>
             <FormControl>

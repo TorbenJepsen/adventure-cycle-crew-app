@@ -17,10 +17,19 @@ body {
     
 }
 
-form {
+.form1 {
     background-color: #dbd5d5;
     width: 30%;
     height: 250px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
+}
+
+.addRideField {
+    background-color: #dbd5d5;
+    width: 35%;
+    height: 400px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
