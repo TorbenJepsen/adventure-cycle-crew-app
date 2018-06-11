@@ -32,6 +32,7 @@ router.get('/created', (req, res) => {
         pool.query(queryText, [req.user.id])
             .then((result) => {
                 res.send(result.rows);
+
             }).catch((error) => {
                 console.log('error on get created', error);
                 res.sendStatus(500);

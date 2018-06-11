@@ -9,10 +9,13 @@ function* getMyCreatedRidesSaga(action) {
     console.log('getMyCreatedRidesSaga:', action);
     try{
         const myCreatedRides = yield call(axios.get, '/api/bike/created');
-        console.log('createdRides', myCreatedRides);
+        const modifiedCreatedRides = myCreatedRides.data.map((obj) => {
+            obj.isEditing = false;
+            return obj;
+        })
         yield put({
             type: 'FETCH_MY_CREATED_RIDES',
-            payload: myCreatedRides.data,
+            payload: modifiedCreatedRides,
         })
     }catch(error){
         console.log('error in getMyEvents saga', error);

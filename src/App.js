@@ -15,6 +15,7 @@ import './styles/main.css';
 import AddRide from './components/AddRide/AddRide';
 import UpcomingRide from './components/UpcomingRide/UpcomingRide';
 import MyRides from './components/MyRides/MyRides';
+import UpdateRide from './components/UpdateRide/UpdateRide';
 
 
 
@@ -53,6 +54,10 @@ const App = () => (
         <Route
           path="/myrides"
           component={MyRides}
+        />
+        <Route
+          path="/update"
+          component={UpdateRide}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

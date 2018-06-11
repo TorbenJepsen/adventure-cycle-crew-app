@@ -2,47 +2,46 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AppBar from '../AppBar/AppBar';
-import AddRideField from '../AddRideField/AddRideField';
-
+import UpdateRideField from '../UpdateRideField/UpdateRideField';
 
 
 const mapStateToProps = state => ({
     user: state.user,
-    state: state,
+    editRide: state.editRide,
 });
 
-class AddRide extends Component {
+class UpdateRide extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            newRide: {
-                date: '',
-                terrain: '',
-                address: '',
-                start_time: '',
-                length: '',
+            updatedRide: {
+                id: this.props.editRide.id || '',
+                date: this.props.editRide.date || '',
+                terrain: this.props.editRide.terrain || '',
+                address: this.props.editRide.address || '',
+                start_time: this.props.editRide.start_time || '',
+                length: this.props.editRide.length || '',
             }
         }
     }
 
     handleChange = propertyName => event => {
         this.setState({
-            newRide: {
-                ...this.state.newRide,
+            updatedRide: {
+                ...this.state.updatedRide,
                 [propertyName]: event.target.value,
             }
         });
     }
 
-    addNewRide = event => {
+    updateRide = event => {
         event.preventDefault();
-        console.log(this.state.newRide);
         this.props.dispatch({
-            type: 'SET_RIDE',
-            payload: this.state.newRide,
+            type: 'SET_UPDATED_RIDE',
+            payload: this.state.updatedRide,
         })
-        this.props.history.push('ride');
+        this.props.history.push('myrides');
     }
 
     componentDidMount() {
@@ -61,7 +60,7 @@ class AddRide extends Component {
         if (this.props.user.userName) {
             content = (
                 <div className="addRideField">
-                    <AddRideField newRide={this.state.newRide} addNewRide={this.addNewRide} handleChange={this.handleChange} />
+                    <UpdateRideField updatedRide={this.state.updatedRide} handleChange={this.handleChange} updateRide={this.updateRide} />
                 </div>
 
             );
@@ -77,4 +76,4 @@ class AddRide extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(AddRide);
+export default connect(mapStateToProps)(UpdateRide);

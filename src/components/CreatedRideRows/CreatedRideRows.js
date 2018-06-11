@@ -32,7 +32,6 @@ const styles = theme => ({
     },
 });
 
-
 function CreatedRidesRows(props) {
     const date = moment(props.ride.date).format("MMMM Do YYYY");
     const time = props.ride.start_time;
@@ -40,6 +39,7 @@ function CreatedRidesRows(props) {
     const { classes } = props;
 
     return (
+
         <TableRow className={classes.row}>
             <CustomTableCell component="th" scope="row">
                 {date}
@@ -50,7 +50,7 @@ function CreatedRidesRows(props) {
             <CustomTableCell numeric>{props.ride.length} miles</CustomTableCell>
             <CustomTableCell>Riders</CustomTableCell>
             <CustomTableCell>
-            <Button variant="raised" size="small" color="primary" onClick={() => props.handleClickEdit()}>
+            <Button variant="raised" size="small" color="primary" onClick={() => props.handleClickEdit(props.ride)}>
                 Edit Ride
             </Button>
             </CustomTableCell>

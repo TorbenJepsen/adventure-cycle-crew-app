@@ -5,6 +5,7 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CreatedRides from '../CreatedRides/CreatedRides';
 import JoinedRides from '../JoinedRides/JoinedRides';
 import AppBar from '../AppBar/AppBar';
+import UpdateRideField from '../UpdateRideField/UpdateRideField';
 
 
 
@@ -14,25 +15,12 @@ const mapStateToProps = state => ({
 });
 
 class MyRides extends Component {
-    constructor(props) {
-        super(props);
 
-    //     this.state = {
-    //         isEditing: false,
-    //         date: '',
-    //         terrain: '',
-    //         address: '',
-    //         start_time: '',
-    //         length: '',
-    //     }
-    }
+    handleClickEdit = (ride) => {
+        this.props.dispatch({type: 'EDIT_RIDE', payload: ride});
 
-    handleClickEdit = () => {
-        console.log('edit button clicked!', this.props.state);
-        this.setState({
-          isEditing: !this.props.state.isEditing,
-        })
-        this.props.history.push('add');
+        this.props.history.push('update');
+        console.log('edit button clicked!', ride );
       }
 
 
@@ -65,7 +53,26 @@ class MyRides extends Component {
     }
   }
 
-  
+  // showEditing = () => {
+  //   if (this.props.state.myCreatedRides.isEditing) {
+  //     return (
+  //       <div>
+  //         <UpdateRideField />
+  //       </div>
+  //     )
+  //   } else {
+  //     return (
+  //       <div>
+  //       <h3> Created Rides </h3>
+  //       <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} />
+  //       <h3> Rides I've Joined </h3>
+  //       <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
+  //   </div>
+  //     )
+  //   }
+  // }
+
+
 
   render() {
     let content = null;
@@ -74,7 +81,7 @@ class MyRides extends Component {
       content = (
         <div>
             <h3> Created Rides </h3>
-            <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit}/>
+            <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} />
             <h3> Rides I've Joined </h3>
             <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
         </div>

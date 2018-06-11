@@ -51,7 +51,7 @@ function UpdateRideField(props) {
                 label="Date"
                 type="date"
                 className={classes.textField}
-                value={props.newRide.date}
+                value={props.updatedRide.date}
                 onChange={props.handleChange('date')}
                 InputLabelProps={{
                     shrink: true,
@@ -64,7 +64,7 @@ function UpdateRideField(props) {
                 label="Terrain Type"
                 defaultValue="Street"
                 className={classes.textField}
-                value={props.newRide.terrain}
+                value={props.updatedRide.terrain}
                 onChange={props.handleChange('terrain')}
                 SelectProps={{
                     MenuProps: {
@@ -87,7 +87,7 @@ function UpdateRideField(props) {
                     shrink: true,
                 }}
                 placeholder="Enter Address"
-                value={props.newRide.address}
+                value={props.updatedRide.address}
                 onChange={props.handleChange('address')}
                 fullWidth
                 margin="normal"
@@ -98,7 +98,7 @@ function UpdateRideField(props) {
                 label="Start Time"
                 type="time"
                 defaultValue="07:30"
-                value={props.newRide.start_time}
+                value={props.updatedRide.start_time}
                 onChange={props.handleChange('start_time')}
                 className={classes.textField}
                 InputLabelProps={{
@@ -112,7 +112,7 @@ function UpdateRideField(props) {
                 required
                 id="ride length"
                 label="Length of Ride"
-                value={props.newRide.length}
+                value={props.updatedRide.length}
                 onChange={props.handleChange('length')}
                 placeholder="Approx. length in miles"
                 type="number"
