@@ -13,6 +13,9 @@ function* getBikersJoined(action) {
         yield put({
             type: 'FETCH_BIKERS',
             payload: attendingBikers.data,
+        })
+        yield put({
+            type: 'FETCH_MY_JOINED_RIDES',
         }) 
     }catch(error) {
         console.log('error in getBikers', error);
