@@ -114,9 +114,9 @@ router.post('/', (req,res) => {
                 const rideResult = await client.query(queryText, values);
                 const rideId = rideResult.rows[0].id;
 
-                queryText = `INSERT INTO "join_ride" (person_id, ride_id) 
+                let queryText2 = `INSERT INTO "join_ride" (person_id, ride_id) 
                 VALUES ($1, $2) RETURNING id`;
-                const result = await client.query(queryText, [req.user.id, rideId]);
+                const result = await client.query(queryText2, [req.user.id, rideId]);
                 await client.query('COMMIT');
                 res.sendStatus(201);
             } catch(error) {
@@ -129,7 +129,7 @@ router.post('/', (req,res) => {
             res.sendStatus(500);
         })
     } else {
-        res.sendStatus(500);
+        res.sendStatus(403);
     }
 })
 

@@ -50,7 +50,7 @@ function CreatedRidesRows(props) {
             <CustomTableCell numeric>{props.ride.length} miles</CustomTableCell>
             <CustomTableCell>Riders</CustomTableCell>
             <CustomTableCell>
-            <Button variant="raised" size="small" color="primary">
+            <Button variant="raised" size="small" color="primary" onClick={() => props.handleClickEdit()}>
                 Edit Ride
             </Button>
             </CustomTableCell>

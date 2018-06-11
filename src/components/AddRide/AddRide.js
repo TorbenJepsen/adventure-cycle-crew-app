@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AppBar from '../AppBar/AppBar';
 import AddRideField from '../AddRideField/AddRideField';
+import UpdateRideField from '../UpdateRideField/UpdateRideField';
 
 
 const mapStateToProps = state => ({
@@ -20,6 +21,7 @@ class AddRide extends Component {
                 address: '',
                 start_time: '',
                 length: '',
+                isEditing: false,
             }
         }
     }
@@ -43,6 +45,15 @@ class AddRide extends Component {
         this.props.history.push('ride');
     }
 
+    updateRide = event => {
+        event.preventDefault();
+        this.props.dispatch({
+            type: 'SET_UPDATED_RIDE',
+            payload: this.state.newRide,
+        })
+        this.props.history.push('myrides');
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     }
@@ -53,14 +64,31 @@ class AddRide extends Component {
         }
     }
 
+    showEditing = () => {
+        if(this.state.isEditing) {
+            return (
+                <div>
+                    <UpdateRideField newRide={this.state.newRide} updateRide={this.updateRide} handleChange={this.handleChange} />
+                </div>
+            )
+        } else {
+            return (
+                <div className="addRideField">
+                    <AddRideField newRide={this.state.newRide} addNewRide={this.addNewRide} handleChange={this.handleChange} />
+                </div>
+            )
+        }
+    }
+
     render() {
         let content = null;
 
         if (this.props.user.userName) {
             content = (
-                <div className="addRideField">
-                    <AddRideField newRide={this.state.newRide} addNewRide={this.addNewRide} handleChange={this.handleChange} />
-                </div>
+                this.showEditing()
+                // <div className="addRideField">
+                //     <AddRideField newRide={this.state.newRide} addNewRide={this.addNewRide} handleChange={this.handleChange} />
+                // </div>
 
             );
         }

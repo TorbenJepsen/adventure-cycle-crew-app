@@ -17,21 +17,22 @@ class MyRides extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            isEditing: false,
-            date: '',
-            terrain: '',
-            address: '',
-            start_time: '',
-            length: '',
-        }
+    //     this.state = {
+    //         isEditing: false,
+    //         date: '',
+    //         terrain: '',
+    //         address: '',
+    //         start_time: '',
+    //         length: '',
+    //     }
     }
 
     handleClickEdit = () => {
-        console.log('edit button clicked!', this.state);
+        console.log('edit button clicked!', this.props.state);
         this.setState({
-          isEditing: !this.state.isEditing,
+          isEditing: !this.props.state.isEditing,
         })
+        this.props.history.push('add');
       }
 
 
@@ -64,6 +65,8 @@ class MyRides extends Component {
     }
   }
 
+  
+
   render() {
     let content = null;
 
@@ -71,7 +74,7 @@ class MyRides extends Component {
       content = (
         <div>
             <h3> Created Rides </h3>
-            <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide}/>
+            <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit}/>
             <h3> Rides I've Joined </h3>
             <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
         </div>
