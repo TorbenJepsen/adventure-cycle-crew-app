@@ -17,6 +17,9 @@ function* rideSaga(action) {
         yield put({
             type: 'GET_RIDES',
         })
+        yield put({
+            type: 'GET_BIKERS',
+        })
 
 
     }catch(error){

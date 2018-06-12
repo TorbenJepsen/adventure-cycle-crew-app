@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        justifyContent: 'center',
+        
     },
     textField: {
         marginLeft: theme.spacing.unit,
@@ -18,6 +23,16 @@ const styles = theme => ({
     menu: {
         width: 200,
     },
+    root: {
+        flexGrow: 1,
+      },
+      paper: {
+        padding: theme.spacing.unit * 5,
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        margin: 40,
+
+      },
 });
 
 const terrains = [
@@ -44,7 +59,28 @@ function AddRideField(props) {
     const { classes } = props;
 
     return (
-        <form className={classes.container} noValidate autoComplete="off" onSubmit={props.addNewRide}>
+        <div className={classes.root}>
+              <Grid container spacing={32}>
+              <Paper className={classes.paper}>
+        <form  className={classes.container} noValidate autoComplete="off" onSubmit={props.addNewRide}>
+        <Grid item xs={12}>
+            <TextField
+                required
+                id="Meet Up Spot"
+                label="Meet Up Spot"
+                type="text"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+                placeholder="Enter Address"
+                value={props.newRide.address}
+                onChange={props.handleChange('address')}
+                fullWidth
+                margin="normal"
+            />
+            </Grid>
+        <Grid item xs={12}>
+
             <TextField
                 required
                 id="date"
@@ -57,12 +93,13 @@ function AddRideField(props) {
                     shrink: true,
                 }}
             />
+            </Grid>
+            <Grid item xs={12}>
             <TextField
                 required
                 id="terrain"
                 select
-                label="Terrain Type"
-                defaultValue="Street"
+                label="Select"
                 className={classes.textField}
                 value={props.newRide.terrain}
                 onChange={props.handleChange('terrain')}
@@ -71,33 +108,23 @@ function AddRideField(props) {
                         className: classes.menu,
                     },
                 }}
+                helperText="Please select a type of terrain"
                 margin="normal"
             >
                 {terrains.map(option => (
-                    <option key={option.value} value={option.value}>
+                    <MenuItem key={option.value} value={option.value}>
                         {option.label}
-                    </option>
+                    </MenuItem>
                 ))}
             </TextField>
-            <TextField
-                required
-                id="full-width"
-                label="Starting Address"
-                InputLabelProps={{
-                    shrink: true,
-                }}
-                placeholder="Enter Address"
-                value={props.newRide.address}
-                onChange={props.handleChange('address')}
-                fullWidth
-                margin="normal"
-            />
+            </Grid>
+
+            <Grid item xs={12}>
             <TextField
                 required
                 id="time"
                 label="Start Time"
                 type="time"
-                defaultValue="07:30"
                 value={props.newRide.start_time}
                 onChange={props.handleChange('start_time')}
                 className={classes.textField}
@@ -108,6 +135,8 @@ function AddRideField(props) {
                     step: 300, // 5 min
                 }}
             />
+            </Grid>
+            <Grid item xs={12}>
             <TextField
                 required
                 id="ride length"
@@ -122,14 +151,18 @@ function AddRideField(props) {
                 }}
                 margin="normal"
             />
-            <div>
+            </Grid>
+
                 <FormControl>
                     <Button variant="raised" size="small" color="primary" type="submit">
                         Add New Ride!
             </Button>
                 </FormControl>
-            </div>
+
         </form>
+        </Paper>
+        </Grid>
+        </div>
     );
 }
 

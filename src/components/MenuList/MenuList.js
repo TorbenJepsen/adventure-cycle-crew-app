@@ -17,6 +17,7 @@ const styles = theme => ({
     },
     paper: {
         marginRight: theme.spacing.unit * 2,
+        zIndex: 9999,
     },
     popperClose: {
         pointerEvents: 'none',

@@ -53,8 +53,6 @@ class UpcomingRide extends Component {
 
         return (
             <div>
-                
-                {/* <Nav /> */}
                 <AppBar />
                 {content}
             </div>

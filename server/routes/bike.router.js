@@ -115,19 +115,20 @@ router.post('/', (req,res) => {
                 const rideResult = await client.query(queryText, values);
                 const rideId = rideResult.rows[0].id;
 
-                let queryText2 = `INSERT INTO "join_ride" (person_id, ride_id) 
+                queryText = `INSERT INTO "join_ride" (person_id, ride_id) 
                 VALUES ($1, $2) RETURNING id`;
-                const result = await client.query(queryText2, [req.user.id, rideId]);
+                const result = await client.query(queryText, [req.user.id, rideId]);
                 await client.query('COMMIT');
                 res.sendStatus(201);
             } catch(error) {
-                await client.query('ROLLBACK');
+                await client.query('ROLLBACK', error);
                 throw err;
             } finally {
                 client.release();
             }
         })().catch( (error) => {
             res.sendStatus(500);
+            console.log('CATCH', error);
         })
     } else {
         res.sendStatus(403);

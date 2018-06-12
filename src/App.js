@@ -22,7 +22,6 @@ import UpdateRide from './components/UpdateRide/UpdateRide';
 
 const App = () => (
   <div>
-    {/* <Header title="Adventure Cycling Club" /> */}
     
     <Router>
       <Switch>

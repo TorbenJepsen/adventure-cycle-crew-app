@@ -26,15 +26,6 @@ body {
     border-radius: 2px;
 }
 
-.addRideField {
-    background-color: #dbd5d5;
-    width: 35%;
-    height: 400px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
-}
-
 input {
     margin: 5px;
     margin-bottom: 10px;
@@ -60,12 +51,12 @@ input[type="submit"] {
     background-color: #f8f8f8;
 }
 
-.navbar {
+/* .navbar {
   background-color: whitesmoke;
   width: 100%;
   border-radius: 0px;
   
-}
+} */
 
 .logo {
     margin: 10px;

@@ -5,7 +5,6 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CreatedRides from '../CreatedRides/CreatedRides';
 import JoinedRides from '../JoinedRides/JoinedRides';
 import AppBar from '../AppBar/AppBar';
-import UpdateRideField from '../UpdateRideField/UpdateRideField';
 
 
 
@@ -16,35 +15,35 @@ const mapStateToProps = state => ({
 
 class MyRides extends Component {
 
-    handleClickEdit = (ride) => {
-        this.props.dispatch({type: 'EDIT_RIDE', payload: ride});
+  handleClickEdit = (ride) => {
+    this.props.dispatch({ type: 'EDIT_RIDE', payload: ride });
 
-        this.props.history.push('update');
-        console.log('edit button clicked!', ride );
-      }
-
-
-    leaveRide = ride => {
-        this.props.dispatch({
-            type:'LEAVE_RIDE',
-            payload: ride,
-        })
+    this.props.history.push('update');
+    console.log('edit button clicked!', ride);
+  }
 
 
-    }
+  leaveRide = ride => {
+    this.props.dispatch({
+      type: 'LEAVE_RIDE',
+      payload: ride,
+    })
 
-    cancelRide = ride => {
-        this.props.dispatch({
-            type: 'CANCEL_RIDE',
-            payload: ride,
-        })
-    }
+
+  }
+
+  cancelRide = ride => {
+    this.props.dispatch({
+      type: 'CANCEL_RIDE',
+      payload: ride,
+    })
+  }
 
 
   componentDidMount() {
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-    this.props.dispatch({type: 'GET_MY_JOINED_RIDES'});
-    this.props.dispatch({type: 'GET_MY_CREATED_RIDES'});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.props.dispatch({ type: 'GET_MY_JOINED_RIDES' });
+    this.props.dispatch({ type: 'GET_MY_CREATED_RIDES' });
   }
 
   componentDidUpdate() {
@@ -53,46 +52,24 @@ class MyRides extends Component {
     }
   }
 
-  // showEditing = () => {
-  //   if (this.props.state.myCreatedRides.isEditing) {
-  //     return (
-  //       <div>
-  //         <UpdateRideField />
-  //       </div>
-  //     )
-  //   } else {
-  //     return (
-  //       <div>
-  //       <h3> Created Rides </h3>
-  //       <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} />
-  //       <h3> Rides I've Joined </h3>
-  //       <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
-  //   </div>
-  //     )
-  //   }
-  // }
-
-
-
   render() {
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
-            <h3> Created Rides </h3>
-            <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} />
-            <h3> Rides I've Joined </h3>
-            <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide}/>
+          <h3> Created Rides </h3>
+          <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} />
+          <h3> Rides I've Joined </h3>
+          <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide} />
         </div>
       );
     }
 
     return (
       <div>
-        {/* <Nav /> */}
         <AppBar />
-        { content }
+        {content}
       </div>
     );
   }

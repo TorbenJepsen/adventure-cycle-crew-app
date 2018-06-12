@@ -59,7 +59,7 @@ class UpdateRide extends Component {
 
         if (this.props.user.userName) {
             content = (
-                <div className="addRideField">
+                <div>
                     <UpdateRideField updatedRide={this.state.updatedRide} handleChange={this.handleChange} updateRide={this.updateRide} />
                 </div>
 
