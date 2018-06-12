@@ -9,6 +9,7 @@ import myCreatedRidesSaga from './myCreatedRidesSaga';
 import leaveRideSaga from './leaveRideSaga';
 import cancelRideSaga from './cancelRideSaga';
 import getBikers from './getBikersSaga';
+import updateSaga from './updateRideSaga';
 
 
 export default function* rootSaga() {
@@ -23,6 +24,7 @@ export default function* rootSaga() {
     leaveRideSaga(),
     cancelRideSaga(),
     getBikers(),
+    updateSaga(),
     // watchIncrementAsync()
   ]);
 }

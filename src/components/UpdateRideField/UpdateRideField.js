@@ -62,7 +62,6 @@ function UpdateRideField(props) {
                 id="terrain"
                 select
                 label="Terrain Type"
-                defaultValue="Street"
                 className={classes.textField}
                 value={props.updatedRide.terrain}
                 onChange={props.handleChange('terrain')}
@@ -97,7 +96,6 @@ function UpdateRideField(props) {
                 id="time"
                 label="Start Time"
                 type="time"
-                defaultValue="07:30"
                 value={props.updatedRide.start_time}
                 onChange={props.handleChange('start_time')}
                 className={classes.textField}
