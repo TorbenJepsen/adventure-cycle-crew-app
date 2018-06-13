@@ -44,6 +44,7 @@ class MyRides extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({ type: 'GET_MY_JOINED_RIDES' });
     this.props.dispatch({ type: 'GET_MY_CREATED_RIDES' });
+    this.props.dispatch({ type: 'GET_BIKERS'});
   }
 
   componentDidUpdate() {
@@ -54,14 +55,15 @@ class MyRides extends Component {
 
   render() {
     let content = null;
+    let allRiders = this.props.state.joinedBikers;
 
     if (this.props.user.userName) {
       content = (
         <div>
           <h3> Created Rides </h3>
-          <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} />
+          <CreatedRides created={this.props.state.myCreatedRides} cancelRide={this.cancelRide} handleClickEdit={this.handleClickEdit} allRiders={allRiders}/>
           <h3> Rides I've Joined </h3>
-          <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide} />
+          <JoinedRides joined={this.props.state.myJoinedRides} leaveRide={this.leaveRide} allRiders={allRiders}/>
         </div>
       );
     }

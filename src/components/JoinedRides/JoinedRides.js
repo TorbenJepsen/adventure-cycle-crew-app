@@ -55,7 +55,7 @@ function JoinedRides(props) {
                 </TableHead>
                 <TableBody>
                     {props.joined.map(ride => <JoinedRidesRows key={ride.id}
-                    ride = {ride} leaveRide={props.leaveRide}/>
+                    ride = {ride} leaveRide={props.leaveRide} allRiders={props.allRiders}/>
                     )}
                 </TableBody>
             </Table>

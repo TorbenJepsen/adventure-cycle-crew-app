@@ -41,7 +41,7 @@ class BikerList extends React.Component {
         >
           <MoreVertIcon />
         </IconButton>
-        {this.props.riderList.length} bikers have joined this ride
+        {this.props.riderList.length} Bikers have Joined This Ride
         <Menu
           id="long-menu"
           anchorEl={anchorEl}

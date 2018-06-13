@@ -45,7 +45,7 @@ router.get('/created', (req, res) => {
 router.get('/joined', (req, res) => {
     console.log('GET joined rides route');
     if (req.isAuthenticated()) {
-        let queryText = `SELECT "join_ride"."id", "ride"."date", "ride"."address", "ride"."length", "ride"."start_time", "ride"."terrain"
+        let queryText = `SELECT "join_ride"."id", "ride"."date", "ride"."address", "ride"."length", "ride"."start_time", "ride"."terrain", "ride"."id"
         FROM "join_ride"
         JOIN "ride" ON "ride"."id" =  "join_ride"."ride_id"
         JOIN "person" ON "person"."id" = "join_ride"."person_id"
@@ -177,10 +177,9 @@ router.put('/update', (req, res) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-    console.log(req.user);
-    console.log(req.params);
+    console.log(req.user, req.params);
     if (req.isAuthenticated()) {
-        let queryText = `DELETE FROM "join_ride" WHERE "person_id" = $1 AND "id" = $2`;
+        let queryText = `DELETE FROM "join_ride" WHERE "person_id" = $1 AND "ride_id" = $2`;
         pool.query(queryText, [req.user.id, req.params.id])
             .then(() => {
                 res.sendStatus(201);
@@ -195,7 +194,6 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.delete('/cancel/:id', (req, res, next) => {
-    console.log('is this working?');
     if (req.isAuthenticated()) {
         let queryText = `DELETE FROM "ride" WHERE id = $1`;
         pool.query(queryText, [req.params.id])

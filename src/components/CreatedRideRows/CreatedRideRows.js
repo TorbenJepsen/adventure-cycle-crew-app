@@ -36,6 +36,7 @@ function CreatedRidesRows(props) {
     const date = moment(props.ride.date).format("MMMM Do YYYY");
     const time = props.ride.start_time;
     const formattedTime = moment(time, "HH:mm:ss").format("h:mm A");
+    const riderList = props.allRiders.filter(rider => rider.ride_id === props.ride.id);
     const { classes } = props;
 
     return (
@@ -48,7 +49,7 @@ function CreatedRidesRows(props) {
             <CustomTableCell>{formattedTime}</CustomTableCell>
             <CustomTableCell>{props.ride.terrain}</CustomTableCell>
             <CustomTableCell numeric>{props.ride.length} miles</CustomTableCell>
-            <CustomTableCell>Riders</CustomTableCell>
+            <CustomTableCell>{riderList.length}</CustomTableCell>
             <CustomTableCell>
             <Button variant="raised" size="small" color="primary" onClick={() => props.handleClickEdit(props.ride)}>
                 Edit Ride

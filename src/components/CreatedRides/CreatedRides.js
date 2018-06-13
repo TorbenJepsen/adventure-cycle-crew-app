@@ -56,7 +56,7 @@ function CreatedRides(props) {
                 </TableHead>
                 <TableBody>
                     {props.created.map(ride => <CreatedRidesRows key={ride.id}
-                    ride = {ride} cancelRide={props.cancelRide} handleClickEdit={props.handleClickEdit}/>
+                    ride = {ride} cancelRide={props.cancelRide} handleClickEdit={props.handleClickEdit} allRiders={props.allRiders}/>
                     )}
                 </TableBody>
             </Table>
