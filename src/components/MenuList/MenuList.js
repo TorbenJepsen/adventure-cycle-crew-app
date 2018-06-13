@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Nav from '../Nav/Nav';
+import Portal from '@material-ui/core/Portal';
 
 const styles = theme => ({
     root: {
@@ -17,7 +18,8 @@ const styles = theme => ({
     },
     paper: {
         marginRight: theme.spacing.unit * 2,
-        zIndex: 9999,
+        zIndex: 9999999,
+        backgroundColor: theme.palette.background.paper,
     },
     popperClose: {
         pointerEvents: 'none',
@@ -62,6 +64,7 @@ class MenuListComposition extends React.Component {
                             </IconButton>
                         </div>
                     </Target>
+                    <Portal>
                     <Popper
                         placement="bottom-start"
                         eventsEnabled={open}
@@ -77,6 +80,7 @@ class MenuListComposition extends React.Component {
                             </Grow>
                         </ClickAwayListener>
                     </Popper>
+                    </Portal>
                 </Manager>
             </div >
         );
