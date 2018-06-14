@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import AppBar from '../AppBar/AppBar';
 import AddRideField from '../AddRideField/AddRideField';
+import swal from 'sweetalert';
 
 
 
@@ -42,6 +43,7 @@ class AddRide extends Component {
             type: 'SET_RIDE',
             payload: this.state.newRide,
         })
+        swal("Thanks!", "Your bike ride has been added!", "success");
         this.props.history.push('ride');
     }
 

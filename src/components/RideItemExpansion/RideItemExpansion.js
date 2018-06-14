@@ -18,7 +18,7 @@ const styles = theme => ({
     },
     button: {
         display: 'flex',
-        justifyContent: 'left',
+        justifyContent: 'center',
         alignItems: 'left',
     }
 });
@@ -33,20 +33,18 @@ function RideItemExpansion(props) {
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography>
-                        Starts: {props.formattedTime}
+                        <b>Starts:</b> {props.formattedTime}
                         <br />
-                        Ride Length: {props.ride.length} miles
+                        <b>Ride Length:</b> {props.ride.length} miles
                         <br />
-                        Terrain: {props.ride.terrain}
+                        <b>Terrain:</b> {props.ride.terrain}
                         <br />
-                        Meet Up Spot: {props.ride.address}
+                        <b>Meet Up Spot:</b> {props.ride.address}
                         <br />
                         <br />
-                        <div className={classes.button}>
-                        <Button variant="raised" size="large" color="primary" onClick={() => props.handleJoinRide(props.ride)}>
+                        <Button variant="raised" size="large" color="primary" className={classes.button} onClick={() => props.handleJoinRide(props.ride)}>
                             RSVP!
                         </Button>
-                        </div>
                     </Typography>
                 </ExpansionPanelDetails>
             </ExpansionPanel>

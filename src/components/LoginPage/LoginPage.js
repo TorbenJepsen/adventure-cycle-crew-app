@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import ButtonsAppBar from '../AppBar/AppBar';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import FormControl from '@material-ui/core/FormControl';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Button from '@material-ui/core/Button';
+import LoginField from '../LoginField/LoginField';
 
 
 
@@ -86,58 +78,7 @@ class LoginPage extends Component {
         <ButtonsAppBar />
         {this.renderAlert()}
         <div>
-        <h1 className="loginForm">Welcome To The White Bear Lake Adventure Cycle Club!</h1>
-        
-        <form onSubmit={this.login} className="form1">
-         
-          <div>
-            <FormControl>
-              <InputLabel htmlFor="username">
-                Username:</InputLabel>
-              <Input
-                id="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </FormControl>
-          </div>
-          <div>
-            <FormControl>
-              <InputLabel htmlFor="password">
-                Password:</InputLabel>
-              <Input
-                id="password"
-                type={this.state.showPassword ? 'text' : 'password'}
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="Toggle password visibility"
-                      onClick={this.handleClickShowPassword}
-                    >
-                      {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-          </div>
-          <div>
-            <p></p>
-            </div>
-          <div>
-            <FormControl>
-            <Button variant="raised" size="small" color="primary" type="submit" value="Log In">
-            Log In
-            </Button>
-            </FormControl>
-            </div>
-            <div>
-              <p>Don't have an account?</p>
-            <Link to="/register">Click Here to Register!</Link>            
-          </div>
-        </form>      
+        <LoginField login={this.login} handleInputChangeFor={this.handleInputChangeFor} handleMouseDownPassword={this.handleMouseDownPassword} handleClickShowPassword={this.handleClickShowPassword} state={this.state}/>
         </div>
         <img src="images/wbl-club-log.jpg" alt="club logo" height="300" width="200" display="flex" />
       </div>

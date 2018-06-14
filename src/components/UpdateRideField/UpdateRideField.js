@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
+// import moment from 'moment';
 
 const styles = theme => ({
     container: {
@@ -54,7 +55,8 @@ const terrains = [
 ];
 
 function UpdateRideField(props) {
-
+    // const date = props.updatedRide.date;
+    // const formattedDate = moment(date, "MMMM Do YYYY").format("yyyy MM dd");
     const { classes } = props;
 
     return (

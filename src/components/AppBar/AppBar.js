@@ -29,7 +29,7 @@ function ButtonsAppBar(props) {
           <MenuListComposition />
           <img src="images/bike-logo-icon-47219.png" alt="bike-logo" height="70" width="70" className="logo" />
           <Typography variant="title" color="inherit" className={classes.flex}>
-            WBL Adventure Cycle Club
+            Adventure Cycle Club
          </Typography>
         <LogoutButton />
         </Toolbar>

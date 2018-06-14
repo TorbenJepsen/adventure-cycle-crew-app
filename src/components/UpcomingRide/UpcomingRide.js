@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import RideItem from '../RideItem/RideItem';
 import AppBar from '../AppBar/AppBar';
+import AddRideButton from '../AddRideButton/AddRideButton';
 
 
 
@@ -48,6 +49,8 @@ class UpcomingRide extends Component {
                         ride={ride} handleJoinRide={this.handleJoinRide} allRiders={allRiders}/>
                     )}
                 </div>
+
+
             );
         }
 
@@ -55,6 +58,9 @@ class UpcomingRide extends Component {
             <div>
                 <AppBar />
                 {content}
+                <div>
+                <AddRideButton />
+                    </div>
             </div>
         );
     }

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
 import ButtonsAppBar from '../AppBar/AppBar';
+import RegisterField from '../RegisterField/RegisterField';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -75,43 +71,7 @@ class RegisterPage extends Component {
       <div>
         <ButtonsAppBar />
         {this.renderAlert()}
-        <form onSubmit={this.registerUser} className="form1">
-          <h1>Join the Club!</h1>
-          <div>
-            <FormControl>
-            <InputLabel htmlFor="username">
-              Username:</InputLabel>
-              <Input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </FormControl>
-          </div>
-          <div>
-          <FormControl>
-            <InputLabel htmlFor="password">
-              Password:</InputLabel>
-              <Input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </FormControl>
-          </div>
-          <div>
-            <p></p>
-          <FormControl>
-            <Button variant="raised" size="small" color="primary" type="submit" value="Log In">
-            Register
-            </Button>
-            </FormControl>
-              <p></p>
-            <Link to="/home">Cancel</Link>
-          </div>
-        </form>
+        <RegisterField handleInputChangeFor={this.handleInputChangeFor} registerUser={this.registerUser} state={this.state}/>
       </div>
     );
   }

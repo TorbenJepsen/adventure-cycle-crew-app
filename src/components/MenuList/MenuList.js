@@ -65,21 +65,21 @@ class MenuListComposition extends React.Component {
                         </div>
                     </Target>
                     <Portal>
-                    <Popper
-                        placement="bottom-start"
-                        eventsEnabled={open}
-                        className={classNames({ [classes.popperClose]: !open })}
-                    >
-                        <ClickAwayListener onClickAway={this.handleClose}>
-                            <Grow in={open} id="menu-list-grow" style={{ transformOrigin: '0 0 0' }}>
-                                <Paper>
-                                    <MenuList role="menu">
-                                        <Nav />
-                                    </MenuList>
-                                </Paper>
-                            </Grow>
-                        </ClickAwayListener>
-                    </Popper>
+                        <Popper
+                            placement="bottom-start"
+                            eventsEnabled={open}
+                            className={classNames({ [classes.popperClose]: !open })}
+                        >
+                            <ClickAwayListener onClickAway={this.handleClose}>
+                                <Grow in={open} id="menu-list-grow" style={{ transformOrigin: '0 0 0' }}>
+                                    <Paper>
+                                        <MenuList role="menu">
+                                            <Nav />
+                                        </MenuList>
+                                    </Paper>
+                                </Grow>
+                            </ClickAwayListener>
+                        </Popper>
                     </Portal>
                 </Manager>
             </div >

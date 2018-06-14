@@ -53,15 +53,15 @@ class JoinedRidesExpansionPanels extends React.Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-                Where: {this.props.ride.address}
+                <b>Where:</b> {this.props.ride.address}
                 <br />
-                Starts: {formattedTime}
+                <b>Starts:</b> {formattedTime}
                 <br />
-                Terrain: {this.props.ride.terrain}
+                <b>Terrain:</b> {this.props.ride.terrain}
                 <br />
-                Length: {this.props.ride.length} miles
+                <b>Length:</b> {this.props.ride.length} miles
                 <br />
-                Bikers: {riderList.length}
+                <b>Bikers:</b> {riderList.length}
                 <br />
                 <br />
                 <Button variant="raised" size="small" color="secondary" onClick={() => this.props.leaveRide(this.props.ride)}>
