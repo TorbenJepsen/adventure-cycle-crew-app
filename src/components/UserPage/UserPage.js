@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Button from '@material-ui/core/Button';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-import ButtonsAppBar from '../AppBar/AppBar';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -25,29 +25,32 @@ class UserPage extends Component {
     // this.props.history.push('home');
   }
 
+  getStarted = () => {
+    console.log('button clicked');
+    this.props.history.push('ride');
+  }
+
   render() {
     let content = null;
 
     if (this.props.user.userName) {
       content = (
-        <div>
+        <div className="container1">
           <h1
             id="welcome"
           >
-            Welcome, { this.props.user.userName }!
+            Welcome { this.props.user.userName }!
           </h1>
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
+        <img src="images/wbl-logo-3.jpg" alt="club logo" width='100%'/>
+        <div className="button">
+        <Button variant="raised" color="primary" onClick={() => this.getStarted()}>Click Here to Get Started</Button>
+        </div>
         </div>
       );
     }
 
     return (
       <div>
-        <ButtonsAppBar />
         { content }
       </div>
     );

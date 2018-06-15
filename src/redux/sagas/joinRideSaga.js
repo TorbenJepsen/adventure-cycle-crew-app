@@ -1,5 +1,7 @@
 import { call, put, all, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import swal from 'sweetalert';
+
 
 
 function* joinRide() {
@@ -25,7 +27,7 @@ function* joinRideSaga(action) {
         ])
     } catch (error) {
         console.log('error in POST joinRideSaga:', error);
-
+        swal("You've already rsvp'd for this ride", "Join Another!", "info");
     }
 }
 

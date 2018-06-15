@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ButtonsAppBar from '../AppBar/AppBar';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
@@ -34,7 +33,6 @@ class InfoPage extends Component {
 
     return (
       <div>
-        <ButtonsAppBar />
         { content }
       </div>
     );

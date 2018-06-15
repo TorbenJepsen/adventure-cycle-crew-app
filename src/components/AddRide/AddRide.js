@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import AppBar from '../AppBar/AppBar';
 import AddRideField from '../AddRideField/AddRideField';
 import swal from 'sweetalert';
 
@@ -71,7 +70,6 @@ class AddRide extends Component {
 
         return (
             <div>
-                <AppBar />
                 {content}
             </div>
         );

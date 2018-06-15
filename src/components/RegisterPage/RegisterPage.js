@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ButtonsAppBar from '../AppBar/AppBar';
 import RegisterField from '../RegisterField/RegisterField';
 
 class RegisterPage extends Component {
@@ -69,7 +68,6 @@ class RegisterPage extends Component {
   render() {
     return (
       <div>
-        <ButtonsAppBar />
         {this.renderAlert()}
         <RegisterField handleInputChangeFor={this.handleInputChangeFor} registerUser={this.registerUser} state={this.state}/>
       </div>

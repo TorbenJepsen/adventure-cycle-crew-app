@@ -13,6 +13,7 @@ import Card from '@material-ui/core/Card';
 const styles = theme => ({
   root: {
     width: '100%',
+    color: '#BEBEBE'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

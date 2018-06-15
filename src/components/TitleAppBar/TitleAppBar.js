@@ -20,7 +20,7 @@ const styles = {
   },
 };
 
-function ButtonsAppBar(props) {
+function TitleAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -38,8 +38,8 @@ function ButtonsAppBar(props) {
   );
 }
 
-ButtonsAppBar.propTypes = {
+TitleAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonsAppBar);
+export default withStyles(styles)(TitleAppBar);

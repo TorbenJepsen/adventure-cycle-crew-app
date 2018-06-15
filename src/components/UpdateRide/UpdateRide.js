@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import AppBar from '../AppBar/AppBar';
 import UpdateRideField from '../UpdateRideField/UpdateRideField';
 
 
@@ -9,6 +8,7 @@ const mapStateToProps = state => ({
     user: state.user,
     editRide: state.editRide,
 });
+
 
 class UpdateRide extends Component {
     constructor(props) {
@@ -68,7 +68,6 @@ class UpdateRide extends Component {
 
         return (
             <div>
-                <AppBar />
                 {content}
             </div>
         );

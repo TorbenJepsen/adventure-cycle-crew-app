@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-import ButtonsAppBar from '../AppBar/AppBar';
 import LoginField from '../LoginField/LoginField';
 
 
@@ -75,12 +74,10 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <ButtonsAppBar />
         {this.renderAlert()}
         <div>
         <LoginField login={this.login} handleInputChangeFor={this.handleInputChangeFor} handleMouseDownPassword={this.handleMouseDownPassword} handleClickShowPassword={this.handleClickShowPassword} state={this.state}/>
         </div>
-        <img src="images/wbl-club-log.jpg" alt="club logo" height="300" width="200" display="flex" />
       </div>
     );
   }

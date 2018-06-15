@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import JoinedRides2 from '../JoinedRides/JoinedRides2';
-import AppBar from '../AppBar/AppBar';
 import CreatedRides2 from '../CreatedRides/CreatedRides2';
 import swal from 'sweetalert';
 
@@ -89,7 +88,6 @@ class MyRides extends Component {
 
     return (
       <div>
-        <AppBar />
         {content}
       </div>
     );

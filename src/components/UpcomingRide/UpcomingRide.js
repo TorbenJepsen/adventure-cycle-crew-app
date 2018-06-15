@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import RideItem from '../RideItem/RideItem';
-import AppBar from '../AppBar/AppBar';
 import AddRideButton from '../AddRideButton/AddRideButton';
 
 
@@ -56,7 +55,6 @@ class UpcomingRide extends Component {
 
         return (
             <div>
-                <AppBar />
                 {content}
                 <div>
                 <AddRideButton />
