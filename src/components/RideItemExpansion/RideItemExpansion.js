@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
     root: {
         width: '100%',
+        backgroundColor: '#F6F7EB',
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),

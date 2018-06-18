@@ -31,6 +31,9 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
     },
+    panel: {
+        backgroundColor: '#EBE9E9',
+    }
 });
 
 class CreatedRidesExpansionPanels extends React.Component {
@@ -55,7 +58,7 @@ class CreatedRidesExpansionPanels extends React.Component {
         return (
             <div className={classes.root}>
                 <Card>
-                    <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+                    <ExpansionPanel className={classes.panel} expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className={classes.heading}>{date}</Typography>
                         </ExpansionPanelSummary>

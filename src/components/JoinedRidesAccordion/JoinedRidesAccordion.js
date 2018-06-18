@@ -24,6 +24,9 @@ const styles = theme => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  panel: {
+    backgroundColor: '#EBE9E9',
+}
 });
 
 class JoinedRidesExpansionPanels extends React.Component {
@@ -48,7 +51,7 @@ class JoinedRidesExpansionPanels extends React.Component {
     return (
       <div className={classes.root}>
       <Card>
-        <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+        <ExpansionPanel expanded={expanded === 'panel1'} className={classes.panel} onChange={this.handleChange('panel1')}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>{date}</Typography>
           </ExpansionPanelSummary>

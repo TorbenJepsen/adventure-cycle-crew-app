@@ -44,9 +44,11 @@ class UpcomingRide extends Component {
         if (this.props.user.userName) {
             content = (
                 <div>
+                    <div className="container2">
                     {this.props.state.upcomingRides.map(ride => <RideItem key={ride.id}
                         ride={ride} handleJoinRide={this.handleJoinRide} allRiders={allRiders}/>
                     )}
+                    </div>
                 </div>
 
 

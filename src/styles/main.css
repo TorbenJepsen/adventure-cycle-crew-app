@@ -27,6 +27,10 @@ body {
     border-radius: 2px;
 }
 
+.root {
+    flex-grow:1;
+}
+
 input {
     margin: 5px;
     margin-bottom: 10px;
@@ -90,6 +94,13 @@ input[type="submit"] {
     display:flex;
     justify-content:center;
     align-items:center;
+}
+
+.container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
 ul {

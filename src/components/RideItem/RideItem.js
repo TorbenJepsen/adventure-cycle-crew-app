@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import BikerList from '../BikerList/BikerList';
 import RideItemExpansion from '../RideItemExpansion/RideItemExpansion';
-
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
     card: {
@@ -20,6 +20,8 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#EBE9E9',
+
 
     },
     media: {
@@ -62,6 +64,7 @@ function RideItem(props) {
 
     return (
         <div>
+            <Grid item xs={12}>
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}
@@ -75,6 +78,7 @@ function RideItem(props) {
                 </CardContent>
                 <RideItemExpansion ride={props.ride} formattedTime={formattedTime} handleJoinRide={props.handleJoinRide} />
             </Card>
+            </Grid>
         </div>
     );
 }
