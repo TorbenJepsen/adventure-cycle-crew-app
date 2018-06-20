@@ -16,7 +16,6 @@ import AddRide from './components/AddRide/AddRide';
 import UpcomingRide from './components/UpcomingRide/UpcomingRide';
 import MyRides from './components/MyRides/MyRides';
 import UpdateRide from './components/UpdateRide/UpdateRide';
-import WelcomePage from './components/WelcomePage/WelcomePage';
 import TitleAppBar from './components/TitleAppBar/TitleAppBar';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -49,10 +48,6 @@ const App = () => (
         <TitleAppBar />
       <Switch>
         <Redirect exact from="/" to="/home" />
-        <Route
-          path="/welcome"
-          component={WelcomePage}
-        />
         <Route
           path="/home"
           component={LoginPage}
