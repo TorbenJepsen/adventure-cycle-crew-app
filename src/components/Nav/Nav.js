@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
-import lightBlue from '@material-ui/core/colors/lightBlue';
 import MenuItem from '@material-ui/core/MenuItem';
+import { NavLink } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: lightBlue,
-    // backgroundColor: theme.palette.background.paper,
-    zIndex: '999999 !important',
   },
 });
 
@@ -21,20 +18,30 @@ function Nav(props) {
   return (
     <div className={classes.root}>
       <List component="nav">
-        <MenuItem button component='a' href="/user">
+        <MenuItem>
+        <NavLink to="/user">
           <ListItemText primary="User Home" />
+          </NavLink>
         </MenuItem>
-        <MenuItem button component='a' href="/add">
+        <MenuItem>
+        <NavLink to="/add">
           <ListItemText primary="Add a New Ride" />
+          </NavLink>
         </MenuItem>
-        <MenuItem button component='a' href="/ride">
+        <MenuItem> 
+        <NavLink to ="/ride">
           <ListItemText primary="Upcoming Rides" />
+          </NavLink>
         </MenuItem>
-        <MenuItem button component='a' href="/myrides">
+        <MenuItem>
+        <NavLink to="/myrides">
           <ListItemText primary="Manage My Rides" />
+          </NavLink>
         </MenuItem>
-        <MenuItem button component='a' href="/info">
+        <MenuItem>
+        <NavLink to="/info">
           <ListItemText primary="About" />
+          </NavLink>
         </MenuItem>
       </List>
     </div>
